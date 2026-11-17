@@ -1,0 +1,111 @@
+StationId,Avg_AQI,Max_AQI,AQI_Observations,StationName,City,State,Status
+CH001,96.5,335.0,299,"Sector-25, Chandigarh - CPCC",Chandigarh,Chandigarh,Active
+DL019,221.16,734.0,1379,"Mandir Marg, Delhi - DPCC",Delhi,Delhi,Active
+DL020,269.1,786.0,716,"Mundka, Delhi - DPCC",Delhi,Delhi,Active
+DL029,214.47,677.0,687,"Pusa, Delhi - DPCC",Delhi,Delhi,Active
+HR013,115.28,197.0,116,"Teri Gram, Gurugram - HSPCB",Gurugram,Haryana,Active
+KA011,95.01,308.0,691,"Silk Board, Bengaluru - KSPCB",Bengaluru,Karnataka,Active
+TG005,116.7,917.0,1368,"Sanathnagar, Hyderabad - TSPCB",Hyderabad,Telangana,Active
+TN005,73.02,120.0,344,"SIDCO Kurichi, Coimbatore - TNPCB",Coimbatore,Tamil Nadu,Active
+UP013,141.69,526.0,295,"Gomti Nagar, Lucknow - UPPCB",Lucknow,Uttar Pradesh,Active
+BR006,137.11,634.0,112,"Govt. High School Shikarpur, Patna - BSPCB",Patna,Bihar,Active
+DL002,355.79,927.0,1583,"Anand Vihar, Delhi - DPCC",Delhi,Delhi,Active
+DL037,234.55,746.0,873,"Vivek Vihar, Delhi - DPCC",Delhi,Delhi,Active
+GJ001,452.12,2049.0,1334,"Maninagar, Ahmedabad - GPCB",Ahmedabad,Gujarat,Active
+MH006,68.59,279.0,299,"Borivali East, Mumbai - MPCB",Mumbai,Maharashtra,Active
+PB001,119.92,869.0,1126,"Golden Temple, Amritsar - PPCB",Amritsar,Punjab,Active
+RJ006,132.89,644.0,979,"Shastri Nagar, Jaipur - RSPCB",Jaipur,Rajasthan,Active
+TG003,90.85,213.0,1195,"ICRISAT Patancheru, Hyderabad - TSPCB",Hyderabad,Telangana,Active
+BR010,203.99,377.0,188,"Samanpura, Patna - BSPCB",Patna,Bihar,Active
+DL016,218.93,720.0,875,"Jawaharlal Nehru Stadium, Delhi - DPCC",Delhi,Delhi,Active
+DL027,202.46,817.0,874,"Patparganj, Delhi - DPCC",Delhi,Delhi,Active
+HR012,154.03,328.0,118,"Sector-51, Gurugram - HSPCB",Gurugram,Haryana,Active
+MH012,108.34,313.0,287,"Vasai West, Mumbai - MPCB",Mumbai,Maharashtra,Active
+UP016,253.97,814.0,988,"Talkatora District Industries Center, Lucknow - CPCB",Lucknow,Uttar Pradesh,Active
+WB011,181.37,545.0,552,"Rabindra Bharati University, Kolkata - WBPCB",Kolkata,West Bengal,Active
+AS001,140.11,956.0,495,"Railway Colony, Guwahati - APCB",Guwahati,Assam,Active
+BR009,135.83,318.0,187,"Rajbansi Nagar, Patna - BSPCB",Patna,Bihar,Active
+DL005,252.62,738.0,724,"Bawana, Delhi - DPCC",Delhi,Delhi,Active
+DL018,208.79,764.0,878,"Major Dhyan Chand National Stadium, Delhi - DPCC",Delhi,Delhi,Active
+DL024,237.05,722.0,879,"Nehru Nagar, Delhi - DPCC",Delhi,Delhi,Active
+DL026,217.43,812.0,876,"Okhla Phase-2, Delhi - DPCC",Delhi,Delhi,Active
+DL030,184.78,769.0,928,"Pusa, Delhi - IMD",Delhi,Delhi,Active
+DL033,235.08,636.0,1055,"Shadipur, Delhi - CPCB",Delhi,Delhi,Active
+DL036,197.63,622.0,725,"Sri Aurobindo Marg, Delhi - DPCC",Delhi,Delhi,Active
+TG004,97.07,281.0,1328,"IDA Pashamylaram, Hyderabad - TSPCB",Hyderabad,Telangana,Active
+TN001,117.9,661.0,1664,"Alandur Bus Depot, Chennai - CPCB",Chennai,Tamil Nadu,Active
+WB008,109.14,297.0,302,"Bidhannagar, Kolkata - WBPCB",Kolkata,West Bengal,Active
+BR007,251.06,619.0,1377,"IGSC Planetarium Complex, Patna - BSPCB",Patna,Bihar,Active
+DL014,230.69,628.0,909,"ITO, Delhi - CPCB",Delhi,Delhi,Active
+DL017,199.15,786.0,949,"Lodhi Road, Delhi - IMD",Delhi,Delhi,Active
+ML001,53.8,182.0,205,"Lumpyngngad, Shillong - Meghalaya PCB",Shillong,Meghalaya,Active
+DL013,225.98,568.0,1252,"IHBAS, Dilshad Garden, Delhi - CPCB",Delhi,Delhi,Active
+HR014,222.12,891.0,1353,"Vikas Sadan, Gurugram - HSPCB",Gurugram,Haryana,Active
+JH001,159.25,604.0,771,"Tata Stadium, Jorapokhar - JSPCB",Jorapokhar,Jharkhand,Active
+KA003,98.98,727.0,1596,"BWSSB Kadabesanahalli, Bengaluru - CPCB",Bengaluru,Karnataka,Active
+KL007,67.22,120.0,124,"Kariavattom, Thiruvananthapuram - Kerala PCB",Thiruvananthapuram,Kerala,Active
+MH014,98.03,323.0,377,"Worli, Mumbai - MPCB",Mumbai,Maharashtra,Active
+WB007,143.12,362.0,302,"Ballygunge, Kolkata - WBPCB",Kolkata,West Bengal,Active
+AP001,95.3,312.0,841,"Secretariat, Amaravati - APPCB",Amaravati,Andhra Pradesh,Active
+DL006,231.96,698.0,699,"Burari Crossing, Delhi - IMD",Delhi,Delhi,Inactive
+KA004,95.28,296.0,678,"Bapuji Nagar, Bengaluru - KSPCB",Bengaluru,Karnataka,Active
+KA008,90.36,328.0,643,"Jayanagar 5th Block, Bengaluru - KSPCB",Bengaluru,Karnataka,Active
+KL008,75.65,230.0,1046,"Plammoodu, Thiruvananthapuram - Kerala PCB",Thiruvananthapuram,Kerala,Active
+MH010,82.23,282.0,388,"Powai, Mumbai - MPCB",Mumbai,Maharashtra,Active
+TG001,97.19,165.0,921,"Bollaram Industrial Area, Hyderabad - TSPCB",Hyderabad,Telangana,Active
+BR008,126.24,334.0,182,"Muradpur, Patna - BSPCB",Patna,Bihar,Active
+DL008,258.02,1019.0,908,"DTU, Delhi - CPCB",Delhi,Delhi,Active
+DL035,225.54,727.0,869,"Sonia Vihar, Delhi - DPCC",Delhi,Delhi,Active
+HR011,214.77,732.0,745,"NISE Gwal Pahari, Gurugram - IMD",Gurugram,Haryana,Active
+MH009,127.29,312.0,390,"Kurla, Mumbai - MPCB",Mumbai,Maharashtra,Active
+MH013,99.94,314.0,322,"Vile Parle West, Mumbai - MPCB",Mumbai,Maharashtra,Active
+MP001,132.83,312.0,278,"T T Nagar, Bhopal - MPPCB",Bhopal,Madhya Pradesh,Active
+UP012,194.74,617.0,1698,"Central School, Lucknow - CPCB",Lucknow,Uttar Pradesh,Active
+DL001,217.81,692.0,584,"Alipur, Delhi - DPCC",Delhi,Delhi,Active
+DL003,238.36,721.0,877,"Ashok Vihar, Delhi - DPCC",Delhi,Delhi,Active
+DL015,260.86,790.0,874,"Jahangirpuri, Delhi - DPCC",Delhi,Delhi,Active
+KA009,94.06,461.0,1618,"Peenya, Bengaluru - CPCB",Bengaluru,Karnataka,Active
+KL002,92.36,180.0,153,"Kacheripady, Ernakulam - Kerala PCB",Ernakulam,Kerala,
+KL004,104.28,277.0,158,"Vyttila, Kochi - Kerala PCB",Kochi,Kerala,
+MH005,105.38,307.0,696,"Bandra, Mumbai - MPCB",Mumbai,Maharashtra,Active
+OD001,150.28,355.0,713,"GM Office, Brajrajnagar - OSPCB",Brajrajnagar,Odisha,Active
+BR005,126.89,320.0,75,"DRM Office Danapur, Patna - BSPCB",Patna,Bihar,Active
+DL012,203.48,738.0,967,"IGI Airport (T3), Delhi - IMD",Delhi,Delhi,Active
+DL032,253.23,772.0,871,"Rohini, Delhi - DPCC",Delhi,Delhi,Active
+DL038,271.79,827.0,871,"Wazirpur, Delhi - DPCC",Delhi,Delhi,Active
+KA002,89.84,412.0,839,"BTM Layout, Bengaluru - CPCB",Bengaluru,Karnataka,Active
+MH011,115.82,316.0,375,"Sion, Mumbai - MPCB",Mumbai,Maharashtra,Active
+RJ004,121.17,477.0,989,"Adarsh Nagar, Jaipur - RSPCB",Jaipur,Rajasthan,Active
+TG006,104.72,247.0,1155,"Zoo Park, Hyderabad - TSPCB",Hyderabad,Telangana,Active
+TN002,107.44,291.0,320,"Manali Village, Chennai - TNPCB",Chennai,Tamil Nadu,Active
+DL021,246.42,609.0,1557,"NSIT Dwarka, Delhi - CPCB",Delhi,Delhi,Active
+DL025,234.49,779.0,906,"North Campus, DU, Delhi - IMD",Delhi,Delhi,Active
+KA010,68.32,298.0,1069,"Sanegurava Halli, Bengaluru - KSPCB",Bengaluru,Karnataka,Active
+OD002,172.89,570.0,698,"Talcher Coalfields,Talcher - OSPCB",Talcher,Odisha,Active
+UP014,227.15,707.0,1698,"Lalbagh, Lucknow - CPCB",Lucknow,Uttar Pradesh,Active
+DL010,260.64,741.0,878,"Dwarka-Sector 8, Delhi - DPCC",Delhi,Delhi,Active
+DL011,,,0,"East Arjun Nagar, Delhi - CPCB",Delhi,Delhi,Active
+DL031,247.36,838.0,1693,"R K Puram, Delhi - DPCC",Delhi,Delhi,Active
+DL007,248.19,760.0,1177,"CRRI Mathura Road, Delhi - IMD",Delhi,Delhi,Active
+DL022,204.06,676.0,857,"Najafgarh, Delhi - DPCC",Delhi,Delhi,Active
+DL028,294.3,769.0,1472,"Punjabi Bagh, Delhi - DPCC",Delhi,Delhi,Active
+KA006,77.42,179.0,663,"Hebbal, Bengaluru - KSPCB",Bengaluru,Karnataka,Active
+MZ001,34.77,92.0,111,"Sikulpuikawn, Aizawl - Mizoram PCB",Aizawl,Mizoram,Active
+RJ005,149.54,429.0,1043,"Police Commissionerate, Jaipur - RSPCB",Jaipur,Rajasthan,Active
+TG002,92.19,444.0,1058,"Central University, Hyderabad - TSPCB",Hyderabad,Telangana,Active
+TN004,95.07,449.0,1407,"Velachery Res. Area, Chennai - CPCB",Chennai,Tamil Nadu,Active
+WB013,138.24,447.0,737,"Victoria, Kolkata - WBPCB",Kolkata,West Bengal,Active
+AP005,117.27,387.0,1171,"GVM Corporation, Visakhapatnam - APPCB",Visakhapatnam,Andhra Pradesh,Active
+KA005,110.68,482.0,1181,"City Railway Station, Bengaluru - KSPCB",Bengaluru,Karnataka,Active
+MH007,121.26,318.0,381,"Chhatrapati Shivaji Intl. Airport (T2), Mumbai - MPCB",Mumbai,Maharashtra,Active
+TN003,128.45,636.0,1419,"Manali, Chennai - CPCB",Chennai,Tamil Nadu,Active
+WB009,121.87,359.0,395,"Fort William, Kolkata - WBPCB",Kolkata,West Bengal,Active
+WB010,97.34,323.0,387,"Jadavpur, Kolkata - WBPCB",Kolkata,West Bengal,Active
+WB012,104.26,341.0,321,"Rabindra Sarobar, Kolkata - WBPCB",Kolkata,West Bengal,Active
+DL009,204.64,673.0,875,"Dr. Karni Singh Shooting Range, Delhi - DPCC",Delhi,Delhi,Active
+DL023,237.57,758.0,858,"Narela, Delhi - DPCC",Delhi,Delhi,Active
+DL034,257.91,1012.0,1183,"Sirifort, Delhi - CPCB",Delhi,Delhi,Active
+KA007,83.6,249.0,661,"Hombegowda Nagar, Bengaluru - KSPCB",Bengaluru,Karnataka,Active
+UP015,223.05,533.0,566,"Nishant Ganj, Lucknow - UPPCB",Lucknow,Uttar Pradesh,Inactive
+DL004,192.5,697.0,969,"Aya Nagar, Delhi - IMD",Delhi,Delhi,Active
+MH008,94.67,315.0,357,"Colaba, Mumbai - MPCB",Mumbai,Maharashtra,Active
