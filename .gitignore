@@ -1,0 +1,26 @@
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Temporary files
+*.log
+.DS_Store
+Thumbs.db
+
+# Spark temporary files
+.spark-staging/
+metastore_db/
+spark-warehouse/
