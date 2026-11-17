@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="arch-title arch-desc" id="project_architecture_diagram-root">
+        <title id="arch-title">Smart City Air Quality Pipeline Architecture</title>
+        <desc id="arch-desc">Architecture schematic showing Kaggle CSV datasets and Open-Meteo REST API ingesting into Databricks Unity Catalog, processed through Bronze, Silver, and Gold Delta Lake layers orchestrated by Databricks Workflows and consumed by Power BI.</desc>
+
+        <defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #project_architecture_diagram-root { --paper: #f5f5f5;
+      --paper-2: #ececec;
+      --ink: #2d3142;
+      --muted: #4f5d75;
+      --soft: #5a6580;
+      --rule: rgba(45, 49, 66, 0.12);
+      --rule-solid: #bfc0c0;
+      --accent: #bf4520;
+      --accent-tint: rgba(191, 69, 32, 0.08);
+      --link: #2e5aa8;
+      --sans: 'Geist', system-ui, sans-serif;
+      --serif: 'Instrument Serif', serif;
+      --mono: 'Geist Mono', ui-monospace, monospace; }
+      #project_architecture_diagram-root { color: var(--ink); font-family: var(--sans); }
+      #project_architecture_diagram-root .subtitle { margin-bottom: 1.75rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      max-width: 980px; }
+      #project_architecture_diagram-root .card-tag { font: 500 0.62rem var(--mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 0.35rem; }
+      #project_architecture_diagram-root .card-val { font: 600 1.05rem var(--sans);
+      color: var(--ink);
+      margin-bottom: 0.25rem; }
+      #project_architecture_diagram-root .card-sub { font: 400 0.75rem var(--mono);
+      color: var(--muted);
+      line-height: 1.4; }
+      #project_architecture_diagram-root .diagram-container { width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 1rem; }
+      @media print {
+#project_architecture_diagram-root .diagram-container { overflow-x: visible; }
+}</style>
+          <pattern id="project_architecture_diagram-dots" width="22" height="22" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="0.9" fill="#2d3142" fill-opacity="0.08"/>
+          </pattern>
+          <marker id="project_architecture_diagram-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#4f5d75"/>
+          </marker>
+          <marker id="project_architecture_diagram-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#bf4520"/>
+          </marker>
+          <marker id="project_architecture_diagram-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#2e5aa8"/>
+          </marker>
+        </defs>
+
+        <!-- Canvas Background -->
+        <rect width="100%" height="100%" fill="#f5f5f5"/>
+        <rect width="100%" height="100%" fill="url(#project_architecture_diagram-dots)" opacity="0.6"/>
+
+        <!-- ZONE 1: Ingestion & Data Sources -->
+        <rect x="40" y="90" width="240" height="490" rx="8" fill="#2d3142" stroke="#2d3142" stroke-width="0.8" fill-opacity="0.02" stroke-opacity="0.12"/>
+        <rect x="84" y="94" width="152" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="160" y="103" fill="#5a6580" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.14em">INGESTION &amp; DATA SOURCES</text>
+
+        <!-- ZONE 2: Databricks Medallion Lakehouse Core -->
+        <rect x="308" y="90" width="584" height="490" rx="8" fill="#2d3142" stroke="#2d3142" stroke-width="0.8" fill-opacity="0.02" stroke-opacity="0.12"/>
+        <rect x="500" y="94" width="200" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="600" y="103" fill="#5a6580" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.14em">DATABRICKS MEDALLION LAKEHOUSE</text>
+
+        <!-- ZONE 3: Serving & Intelligence -->
+        <rect x="920" y="90" width="240" height="490" rx="8" fill="#2d3142" stroke="#2d3142" stroke-width="0.8" fill-opacity="0.02" stroke-opacity="0.12"/>
+        <rect x="968" y="94" width="144" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="1040" y="103" fill="#5a6580" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.14em">SERVING &amp; INTELLIGENCE</text>
+
+        <!-- ==================== CONNECTORS (DRAWN BEFORE BOXES) ==================== -->
+
+        <!-- 1. Kaggle CSV -> Unity Catalog Volume (Straight vertical line) -->
+        <line x1="160" y1="220" x2="160" y2="265" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#project_architecture_diagram-arrow)"/>
+
+        <!-- 2. Unity Catalog Volume -> Bronze Layer (Straight horizontal line) -->
+        <line x1="262" y1="310" x2="328" y2="310" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#project_architecture_diagram-arrow)"/>
+
+        <!-- 3. Open-Meteo REST API -> Bronze Weather (Straight horizontal line, Link-blue) -->
+        <line x1="262" y1="460" x2="328" y2="460" stroke="#2e5aa8" stroke-width="1.2" marker-end="url(#project_architecture_diagram-arrow-link)"/>
+
+        <!-- 4. Orchestrator -> Bronze Tier (Dashed vertical trigger) -->
+        <line x1="406" y1="198" x2="406" y2="240" stroke="#5a6580" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#project_architecture_diagram-arrow)"/>
+
+        <!-- 5. Orchestrator -> Silver Tier (Dashed vertical trigger) -->
+        <line x1="602" y1="198" x2="602" y2="240" stroke="#5a6580" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#project_architecture_diagram-arrow)"/>
+
+        <!-- 6. Orchestrator -> Gold Tier (Dashed vertical trigger, Accent) -->
+        <line x1="798" y1="198" x2="798" y2="240" stroke="#bf4520" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#project_architecture_diagram-arrow-accent)"/>
+
+        <!-- 7. Bronze Layer -> Silver Layer (Straight horizontal line) -->
+        <line x1="484" y1="360" x2="524" y2="360" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#project_architecture_diagram-arrow)"/>
+
+        <!-- 8. Silver Layer -> Gold Layer (Straight horizontal line, Accent into focal) -->
+        <line x1="680" y1="360" x2="720" y2="360" stroke="#bf4520" stroke-width="1.4" marker-end="url(#project_architecture_diagram-arrow-accent)"/>
+
+        <!-- 9. Gold Layer -> Power BI Dashboard (Straight horizontal line, Accent) -->
+        <line x1="876" y1="270" x2="938" y2="270" stroke="#bf4520" stroke-width="1.4" marker-end="url(#project_architecture_diagram-arrow-accent)"/>
+
+        <!-- 10. Gold Layer -> Curated CSV Exports (Straight horizontal line) -->
+        <line x1="876" y1="465" x2="938" y2="465" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#project_architecture_diagram-arrow)"/>
+
+        <!-- ==================== CONNECTOR LABELS (WITH OPAQUE MASKS & GAP) ==================== -->
+
+        <!-- Label 1: UPLOAD (placed beside vertical connector at x=160, 8px gap) -->
+        <rect x="168" y="236" width="46" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="191" y="245" fill="#4f5d75" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">UPLOAD</text>
+
+        <!-- Label 2: PYSPARK (above connector at y=310, 6px gap) -->
+        <rect x="270" y="292" width="50" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="295" y="301" fill="#4f5d75" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">PYSPARK</text>
+
+        <!-- Label 3: REST GET (above connector at y=460, 6px gap) -->
+        <rect x="268" y="442" width="54" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="295" y="451" fill="#2e5aa8" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">REST GET</text>
+
+        <!-- Label 4: TASK 1 (beside vertical connector at x=406, 8px gap) -->
+        <rect x="414" y="211" width="38" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="433" y="220" fill="#5a6580" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">TASK 1</text>
+
+        <!-- Label 5: TASK 2 (beside vertical connector at x=602, 8px gap) -->
+        <rect x="610" y="211" width="38" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="629" y="220" fill="#5a6580" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">TASK 2</text>
+
+        <!-- Label 6: TASKS 3+4 (beside vertical connector at x=798, 8px gap) -->
+        <rect x="806" y="211" width="48" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="830" y="220" fill="#bf4520" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">TASKS 3+4</text>
+
+        <!-- Label 7: CLEAN (above connector at y=360, 6px gap) -->
+        <rect x="488" y="342" width="32" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="504" y="351" fill="#4f5d75" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">CLEAN</text>
+
+        <!-- Label 8: ENRICH (above connector at y=360, 6px gap) -->
+        <rect x="682" y="342" width="36" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="700" y="351" fill="#bf4520" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">ENRICH</text>
+
+        <!-- Label 9: DIRECT READ (above connector at y=270, 6px gap) -->
+        <rect x="882" y="252" width="50" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="907" y="261" fill="#bf4520" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">DIRECT</text>
+
+        <!-- Label 10: EXPORT (above connector at y=465, 6px gap) -->
+        <rect x="884" y="447" width="46" height="12" rx="2" fill="#f5f5f5"/>
+        <text x="907" y="456" fill="#4f5d75" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">EXPORT</text>
+
+        <!-- ==================== NODE BOXES & TEXT ==================== -->
+
+        <!-- NODE 1: Kaggle AQI Datasets -->
+        <rect x="58" y="130" width="204" height="90" rx="6" fill="#f5f5f5"/>
+        <rect x="58" y="130" width="204" height="90" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+        <rect x="66" y="138" width="46" height="12" rx="2" fill="none" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.30"/>
+        <text x="89" y="147" fill="#5a6580" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">SOURCE</text>
+        <text x="160" y="168" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Kaggle AQI Datasets</text>
+        <text x="160" y="186" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">5 CSV files · 3.43M records</text>
+        <text x="160" y="202" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">city_day · city_hour · stations</text>
+
+        <!-- NODE 2: Unity Catalog Volume -->
+        <rect x="58" y="265" width="204" height="90" rx="6" fill="#f5f5f5"/>
+        <rect x="58" y="265" width="204" height="90" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+        <rect x="66" y="273" width="50" height="12" rx="2" fill="none" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.30"/>
+        <text x="91" y="282" fill="#5a6580" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">LANDING</text>
+        <text x="160" y="303" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Unity Catalog Volume</text>
+        <text x="160" y="321" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">/Volumes/.../raw/</text>
+        <text x="160" y="337" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">Raw staging storage · DBFS</text>
+
+        <!-- NODE 3: Open-Meteo Weather API -->
+        <rect x="58" y="415" width="204" height="90" rx="6" fill="#f5f5f5"/>
+        <rect x="58" y="415" width="204" height="90" rx="6" fill="#ffffff" stroke="#2e5aa8" stroke-width="1"/>
+        <rect x="66" y="423" width="48" height="12" rx="2" fill="none" stroke="#2e5aa8" stroke-width="0.8" stroke-opacity="0.35"/>
+        <text x="90" y="432" fill="#2e5aa8" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">REST API</text>
+        <text x="160" y="453" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Open-Meteo Weather</text>
+        <text x="160" y="471" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">26 Indian cities · 29,531 rows</text>
+        <text x="160" y="487" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">Temp · Humidity · Rain · Wind</text>
+
+        <!-- NODE 4: Databricks Multi-Task Workflow Orchestrator -->
+        <rect x="328" y="130" width="548" height="68" rx="6" fill="#f5f5f5"/>
+        <rect x="328" y="130" width="548" height="68" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+        <rect x="336" y="138" width="76" height="12" rx="2" fill="none" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.30"/>
+        <text x="374" y="147" fill="#5a6580" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">ORCHESTRATOR</text>
+        <text x="602" y="160" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Databricks Multi-Task Workflow DAG</text>
+        <text x="602" y="178" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">Bronze_Layer (01) → Silver_Layer (02) → Gold_Layer (03) → Weather_Integration (04)</text>
+
+        <!-- NODE 5: Bronze Delta Tier -->
+        <rect x="328" y="240" width="156" height="300" rx="6" fill="#f5f5f5"/>
+        <rect x="328" y="240" width="156" height="300" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+        <rect x="336" y="248" width="46" height="12" rx="2" fill="none" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.30"/>
+        <text x="359" y="257" fill="#5a6580" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">BRONZE</text>
+        <text x="406" y="278" fill="#2d3142" font-size="13" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Bronze Tier</text>
+        <text x="406" y="295" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">Raw Delta Tables</text>
+        <line x1="340" y1="307" x2="472" y2="307" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.12"/>
+        <text x="340" y="328" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• bronze_city_day</text>
+        <text x="340" y="348" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• bronze_city_hour</text>
+        <text x="340" y="368" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• bronze_station_day</text>
+        <text x="340" y="388" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• bronze_station_hour</text>
+        <text x="340" y="408" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• bronze_stations</text>
+        <text x="340" y="428" fill="#2e5aa8" font-size="8" font-family="'Geist Mono', monospace">• bronze_weather</text>
+        <line x1="340" y1="444" x2="472" y2="444" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.12"/>
+        <text x="340" y="466" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace">Format: Delta Lake</text>
+        <text x="340" y="486" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace">Ingest timestamp</text>
+        <text x="340" y="506" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace">Schema preserved</text>
+
+        <!-- NODE 6: Silver Delta Tier -->
+        <rect x="524" y="240" width="156" height="300" rx="6" fill="#f5f5f5"/>
+        <rect x="524" y="240" width="156" height="300" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+        <rect x="532" y="248" width="42" height="12" rx="2" fill="none" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.30"/>
+        <text x="553" y="257" fill="#5a6580" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">SILVER</text>
+        <text x="602" y="278" fill="#2d3142" font-size="13" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Silver Tier</text>
+        <text x="602" y="295" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">Cleaned &amp; Validated</text>
+        <line x1="536" y1="307" x2="668" y2="307" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.12"/>
+        <text x="536" y="328" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• Trim text whitespace</text>
+        <text x="536" y="348" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• Filter val &lt; 0 → null</text>
+        <text x="536" y="368" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• Date &amp; time casting</text>
+        <text x="536" y="388" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• Deduplicate keys:</text>
+        <text x="544" y="408" fill="#5a6580" font-size="7.5" font-family="'Geist Mono', monospace">[City, Date]</text>
+        <text x="544" y="424" fill="#5a6580" font-size="7.5" font-family="'Geist Mono', monospace">[StationId, Date]</text>
+        <line x1="536" y1="444" x2="668" y2="444" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.12"/>
+        <text x="536" y="466" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace">ACID transactions</text>
+        <text x="536" y="486" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace">Standardized types</text>
+        <text x="536" y="506" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace">0 duplicate keys</text>
+
+        <!-- NODE 7: Gold Delta Tier (FOCAL NODE: Coral Accent) -->
+        <rect x="720" y="240" width="156" height="300" rx="6" fill="#f5f5f5"/>
+        <rect x="720" y="240" width="156" height="300" rx="6" fill="#bf4520" stroke="#bf4520" stroke-width="1.6" fill-opacity="0.06"/>
+        <rect x="728" y="248" width="36" height="12" rx="2" fill="none" stroke="#bf4520" stroke-width="0.8" stroke-opacity="0.40"/>
+        <text x="746" y="257" fill="#bf4520" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">GOLD</text>
+        <text x="798" y="278" fill="#bf4520" font-size="13" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Gold Layer</text>
+        <text x="798" y="295" fill="#bf4520" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">6 Analytical Marts</text>
+        <line x1="732" y1="307" x2="864" y2="307" stroke="#bf4520" stroke-width="0.8" stroke-opacity="0.22"/>
+        <text x="732" y="328" fill="#2d3142" font-size="7.8" font-weight="600" font-family="'Geist Mono', monospace">• city_aqi_daily</text>
+        <text x="732" y="348" fill="#2d3142" font-size="7.8" font-weight="600" font-family="'Geist Mono', monospace">• city_aqi_monthly</text>
+        <text x="732" y="368" fill="#2d3142" font-size="7.8" font-weight="600" font-family="'Geist Mono', monospace">• pollutant_analysis</text>
+        <text x="732" y="388" fill="#2d3142" font-size="7.8" font-weight="600" font-family="'Geist Mono', monospace">• hourly_patterns</text>
+        <text x="732" y="408" fill="#2d3142" font-size="7.8" font-weight="600" font-family="'Geist Mono', monospace">• station_hotspots</text>
+        <text x="732" y="428" fill="#bf4520" font-size="7.8" font-weight="600" font-family="'Geist Mono', monospace">• weather_air_quality</text>
+        <line x1="732" y1="444" x2="864" y2="444" stroke="#bf4520" stroke-width="0.8" stroke-opacity="0.22"/>
+        <text x="732" y="466" fill="#bf4520" font-size="8" font-family="'Geist Mono', monospace">Weather + AQI joined</text>
+        <text x="732" y="486" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">Station geocoding</text>
+        <text x="732" y="506" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">Business aggregations</text>
+
+        <!-- NODE 8: Power BI Dashboard -->
+        <rect x="938" y="160" width="204" height="150" rx="6" fill="#f5f5f5"/>
+        <rect x="938" y="160" width="204" height="150" rx="6" fill="#ffffff" stroke="#bf4520" stroke-width="1.2"/>
+        <rect x="946" y="168" width="56" height="12" rx="2" fill="none" stroke="#bf4520" stroke-width="0.8" stroke-opacity="0.35"/>
+        <text x="974" y="177" fill="#bf4520" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">DASHBOARD</text>
+        <text x="1040" y="198" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Power BI Analytics</text>
+        <text x="1040" y="218" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">Pollution Intelligence</text>
+        <line x1="950" y1="230" x2="1130" y2="230" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.12"/>
+        <text x="950" y="248" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• City AQI rankings &amp; trends</text>
+        <text x="950" y="266" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• Diurnal rush-hour curves</text>
+        <text x="950" y="284" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• Station hotspot spatial map</text>
+        <text x="950" y="300" fill="#bf4520" font-size="8" font-family="'Geist Mono', monospace">• Meteorological correlations</text>
+
+        <!-- NODE 9: Curated Gold CSV Exports -->
+        <rect x="938" y="390" width="204" height="150" rx="6" fill="#f5f5f5"/>
+        <rect x="938" y="390" width="204" height="150" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+        <rect x="946" y="398" width="46" height="12" rx="2" fill="none" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.30"/>
+        <text x="969" y="407" fill="#5a6580" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">EXPORTS</text>
+        <text x="1040" y="428" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Curated CSV Marts</text>
+        <text x="1040" y="448" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">data/gold/*.csv directory</text>
+        <line x1="950" y1="460" x2="1130" y2="460" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.12"/>
+        <text x="950" y="478" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• 6 Exported Gold CSV sets</text>
+        <text x="950" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• Version-controlled data</text>
+        <text x="950" y="514" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace">• Python / R research access</text>
+        <text x="950" y="530" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace">• Reproducible open pipeline</text>
+
+        <!-- ==================== HORIZONTAL LEGEND STRIP (BOTTOM) ==================== -->
+        <line x1="40" y1="616" x2="1160" y2="616" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.12"/>
+        <text x="40" y="642" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEGEND</text>
+
+        <!-- Legend Item 1: Internal Stream / Standard Node -->
+        <rect x="130" y="632" width="12" height="12" rx="2" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+        <text x="150" y="642" fill="#4f5d75" font-size="8.5" font-family="'Geist Mono', monospace">Delta Lake / DBFS Store</text>
+
+        <!-- Legend Item 2: Focal Gold Layer (Accent) -->
+        <rect x="360" y="632" width="12" height="12" rx="2" fill="#bf4520" stroke="#bf4520" stroke-width="1.4" fill-opacity="0.10"/>
+        <text x="380" y="642" fill="#bf4520" font-size="8.5" font-family="'Geist Mono', monospace">Focal Gold Analytics Marts</text>
+
+        <!-- Legend Item 3: REST API / External Link -->
+        <line x1="620" y1="638" x2="650" y2="638" stroke="#2e5aa8" stroke-width="1.2" marker-end="url(#project_architecture_diagram-arrow-link)"/>
+        <text x="660" y="642" fill="#2e5aa8" font-size="8.5" font-family="'Geist Mono', monospace">REST API Integration</text>
+
+        <!-- Legend Item 4: Orchestration DAG -->
+        <line x1="840" y1="638" x2="870" y2="638" stroke="#5a6580" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#project_architecture_diagram-arrow)"/>
+        <text x="880" y="642" fill="#5a6580" font-size="8.5" font-family="'Geist Mono', monospace">Workflow Orchestration DAG</text>
+
+      </svg>
