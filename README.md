@@ -27,7 +27,6 @@ Raw CSV Files + Weather API → Bronze Layer → Silver Layer → Gold Layer →
 
 > **Detailed Architecture Documentation & Diagram:**
 > - [System Architecture Specification](docs/03_Project_Architecture.md)
-> - [Interactive Architecture Diagram (HTML)](docs/project_architecture_diagram.html)
 > - [Vector Architecture Diagram (SVG)](docs/project_architecture_diagram.svg)
 
 ![Smart City Air Quality Pipeline Architecture](docs/project_architecture_diagram.svg)
