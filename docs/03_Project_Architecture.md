@@ -2,168 +2,166 @@
 
 ## 1. High-Level Architecture Overview
 
-The **Smart City – Air Quality and Pollution Intelligence** platform is an end-to-end cloud data engineering and business intelligence solution designed to ingest, process, clean, model, and visualize longitudinal air quality and meteorological data across 26 major Indian cities.
+**Smart City – Air Quality and Pollution Intelligence** is an end-to-end data engineering and business intelligence project that ingests, cleans, models, and visualizes historical air quality and weather information across **26 Indian cities**.
 
-The architecture leverages the **Databricks Lakehouse Platform**, **Apache Spark (PySpark)**, **Delta Lake**, and **Power BI**, following the industry-standard **Medallion Architecture (Bronze → Silver → Gold)**.
+The solution uses **Databricks**, **Apache Spark (PySpark)**, **Delta Lake**, and the **Bronze → Silver → Gold medallion architecture**. The resulting six curated Gold datasets are exported as CSV marts and used to build a **four-page Power BI report**.
+
+**End-to-end flow:** Kaggle AQI CSVs + Open-Meteo historical weather → Databricks ingestion and staging → Bronze/Silver/Gold processing → curated Gold CSV exports → Power BI dashboards.
 
 ---
 
 ## 2. Project Architecture Diagram
 
-Interactive and standalone vector diagrams designed per the editorial Design System:
-- **Interactive Web Diagram (HTML + SVG):** [project_architecture_diagram.html](project_architecture_diagram.html)
-- **Standalone Vector Diagram (SVG):** [project_architecture_diagram.svg](project_architecture_diagram.svg)
+The updated diagram shows the implemented data flow, including the curated CSV exports that feed Power BI.
 
-### Embedded Architecture Diagram
+- **Standalone editable SVG:** [Smart City Air Quality Architecture](Smart_City_Air_Quality_Architecture.svg)
 
-![Smart City Air Quality Pipeline Architecture](project_architecture_diagram.svg)
+![Smart City Air Quality Intelligence architecture](Smart_City_Air_Quality_Architecture.svg)
+
+> **Repository note:** Place `Smart_City_Air_Quality_Architecture.svg` alongside this Markdown file, or update the relative link to its location in your repository.
 
 ---
 
-## 3. GitHub Markdown Architecture Flowchart (Mermaid)
+## 3. GitHub-Compatible Architecture Flowchart (Mermaid)
 
 ```mermaid
 flowchart LR
-    subgraph SOURCELAYER["Data Ingestion & Sources"]
-        direction TB
-        SRC_KAGGLE["Kaggle AQI Datasets<br/><i>3.43M records · 5 CSV files</i>"]
-        SRC_VOLUME["Unity Catalog Volume<br/><i>/Volumes/.../raw/</i>"]
-        SRC_WEATHER["Open-Meteo Weather API<br/><i>26 cities · 29,531 rows</i>"]
-        SRC_KAGGLE -->|Upload| SRC_VOLUME
+    K["Kaggle India AQI Dataset<br/>5 CSV files · 3,434,754 records"]
+    W["Open-Meteo Historical Weather API<br/>26 cities · 29,531 weather rows"]
+    V["Unity Catalog Volume<br/>/Volumes/workspace/default/air_quality_volume/raw/"]
+
+    subgraph DB["Databricks Lakehouse · PySpark + Delta Lake"]
+        direction LR
+        B["Bronze<br/>Raw AQI and weather Delta tables"]
+        S["Silver<br/>Cleaned, typed and deduplicated tables"]
+        G["Gold<br/>6 analytical marts"]
+        B -->|Clean and validate| S
+        S -->|Aggregate, enrich and join| G
     end
 
-    subgraph LAKEHOUSE["Databricks Lakehouse (PySpark & Delta Lake)"]
-        direction TB
-        
-        subgraph ORCHESTRATOR["Databricks Multi-Task Workflow DAG"]
-            DAG_TASK["01_Bronze → 02_Silver → 03_Gold → 04_Weather"]
-        end
+    O["Databricks Multi-Task Workflow<br/>Bronze_Layer → Silver_Layer → Gold_Layer → Weather_Integration"]
+    C["Curated Gold CSV Exports<br/>data/gold/ · 6 CSV datasets"]
+    P["Power BI · 4 dashboard pages<br/>Overview · Pollutants · Weather · Stations"]
 
-        subgraph BRONZELAYER["Bronze Tier (Raw Delta Tables)"]
-            B1["bronze_city_day / hour"]
-            B2["bronze_station_day / hour"]
-            B3["bronze_stations"]
-            B4["bronze_weather"]
-        end
+    K -->|Upload| V
+    V -->|PySpark ingest| B
+    W -->|REST API ingestion in Weather_Integration| B
+    G -->|Export| C
+    C -->|Import| P
+    O -.->|Orchestrates processing| B
+    O -.->|Orchestrates processing| S
+    O -.->|Orchestrates processing| G
 
-        subgraph SILVERLAYER["Silver Tier (Cleaned & Validated)"]
-            S1["Whitespace trimming & null replacement"]
-            S2["Filter negative values (pollutants >= 0)"]
-            S3["Date & Datetime type casting"]
-            S4["Deduplication by composite business keys"]
-        end
-
-        subgraph GOLDLAYER["Gold Tier (Curated Analytical Marts)"]
-            G1["gold_city_aqi_daily"]
-            G2["gold_city_aqi_monthly"]
-            G3["gold_pollutant_analysis"]
-            G4["gold_hourly_patterns"]
-            G5["gold_station_hotspots"]
-            G6["gold_weather_air_quality"]
-        end
-
-        ORCHESTRATOR -.->|Task 1| BRONZELAYER
-        ORCHESTRATOR -.->|Task 2| SILVERLAYER
-        ORCHESTRATOR -.->|Tasks 3+4| GOLDLAYER
-
-        BRONZELAYER -->|PySpark Cleansing| SILVERLAYER
-        SILVERLAYER -->|Enrichment & Joins| GOLDLAYER
-    end
-
-    subgraph SERVINGLAYER["Serving & Intelligence"]
-        direction TB
-        BI["Power BI Dashboard<br/><i>Interactive Trends, Hotspots & Weather Correlation</i>"]
-        CSV_OUT["Curated CSV Marts<br/><i>data/gold/*.csv directory</i>"]
-    end
-
-    SRC_VOLUME -->|PySpark Read| BRONZELAYER
-    SRC_WEATHER -->|REST API Ingest| BRONZELAYER
-    GOLDLAYER -->|Direct Query / Import| BI
-    GOLDLAYER -->|CSV Sync| CSV_OUT
-
-    classDef focal fill:#fef3f0,stroke:#bf4520,stroke-width:2px,color:#bf4520;
-    classDef standard fill:#ffffff,stroke:#2d3142,stroke-width:1px,color:#2d3142;
-    classDef api fill:#ffffff,stroke:#2e5aa8,stroke-width:1.5px,color:#2e5aa8;
-    class GOLDLAYER,G6,BI focal;
-    class SRC_WEATHER api;
-    class BRONZELAYER,SILVERLAYER,SRC_VOLUME,CSV_OUT standard;
+    classDef source fill:#eef2ff,stroke:#6366f1,color:#1e1b4b;
+    classDef pipeline fill:#f3e8ff,stroke:#9333ea,color:#3b0764;
+    classDef output fill:#fdf4ff,stroke:#a855f7,color:#581c87;
+    class K,W,V source;
+    class B,S,G,O pipeline;
+    class C,P output;
 ```
+
+**Workflow execution order:** The Databricks job executes `Bronze_Layer → Silver_Layer → Gold_Layer → Weather_Integration`. The final weather task performs weather ingestion and weather-related Bronze/Silver/Gold integration after the main AQI Gold processing. The Mermaid diagram represents logical data movement; the job sequence is shown separately in the workflow node.
 
 ---
 
-## 4. Architectural Layers & Component Breakdown
+## 4. Architectural Layers and Components
 
-### 4.1 Ingestion & External Sources
-1. **Kaggle Air Quality in India Dataset:**
-   - **Records:** 3,434,754 raw entries.
-   - **Files:** `city_day.csv`, `city_hour.csv`, `station_day.csv`, `station_hour.csv`, `stations.csv`.
-   - **Staging:** Ingested into Databricks Unity Catalog Volume at `/Volumes/workspace/default/air_quality_volume/raw/`.
-2. **Open-Meteo Historical Weather API:**
-   - **Coverage:** 26 Indian cities with geocoded coordinates (Latitude/Longitude).
-   - **Date Range:** Synchronized to air quality historical span (2015-01-01 to 2020-07-01).
-   - **Metrics:** Daily mean temperature (°C), mean relative humidity (%), precipitation sum (mm), and maximum wind speed (km/h).
-   - **Records:** 29,531 daily weather records extracted via Python requests with rate-limiting and retry logic.
+### 4.1 Ingestion and external sources
 
-### 4.2 Medallion Architecture (Storage & Transformation)
+**Kaggle — Air Quality Data in India**
 
-| Medallion Layer | Implementation Script | Target Delta Tables | Transformation Logic |
+- **Raw entries:** 3,434,754.
+- **Five CSV files:** `city_day.csv`, `city_hour.csv`, `station_day.csv`, `station_hour.csv`, and `stations.csv`.
+- **Raw landing location:** `/Volumes/workspace/default/air_quality_volume/raw/` in a Databricks Unity Catalog Volume.
+
+**Open-Meteo Historical Weather API**
+
+- **Coverage:** 26 Indian cities, using geographic coordinates.
+- **Historical alignment:** 2015-01-01 to 2020-07-01.
+- **Weather fields:** mean temperature (°C), relative humidity (%), precipitation (mm), and maximum wind speed (km/h).
+- **Weather records:** 29,531 daily rows, retrieved with Python requests and retry/rate-limiting logic.
+
+### 4.2 Medallion data architecture
+
+| Layer | Implementation | Delta tables | Main operations |
 |---|---|---|---|
-| **Bronze** | `01_Bronze_Layer.py`<br/>`04_Weather_Data_Extraction.py` | `bronze_city_day`<br/>`bronze_city_hour`<br/>`bronze_station_day`<br/>`bronze_station_hour`<br/>`bronze_stations`<br/>`bronze_weather` | Direct schema-inferred ingestion from raw CSV and API JSON payloads into Delta Lake tables; attaches ingestion timestamp; preserves complete raw data lineage. |
-| **Silver** | `02_Silver_Layer.py`<br/>`04_Weather_Data_Extraction.py` | `silver_city_day`<br/>`silver_city_hour`<br/>`silver_station_day`<br/>`silver_station_hour`<br/>`silver_stations`<br/>`silver_weather` | Data quality enforcement: trims text columns, replaces invalid/negative pollutant values with `NULL`, casts `Date` and `Datetime` strings into native temporal types, deduplicates records using composite business keys (`[City, Date]`, `[StationId, Date]`, `[City, Datetime]`). |
-| **Gold** | `03_Gold_Layer.py`<br/>`04_Weather_Data_Extraction.py` | `gold_city_aqi_daily`<br/>`gold_city_aqi_monthly`<br/>`gold_pollutant_analysis`<br/>`gold_hourly_patterns`<br/>`gold_station_hotspots`<br/>`gold_weather_air_quality` | Analytical modeling & aggregations: creates daily city AQI summaries, calculates monthly rolling statistics (Avg AQI, Max AQI, PM2.5, PM10), unpivots pollutants for comparative breakdown, aggregates 24-hour diurnal trends, enriches monitoring stations with geographic metadata, and joins meteorological variables with air quality. |
+| **Bronze** | `01_Bronze_Layer.py`; weather processing in `04_Weather_Data_Extraction.py` | `bronze_city_day`, `bronze_city_hour`, `bronze_station_day`, `bronze_station_hour`, `bronze_stations`, `bronze_weather` | Ingest source data, retain raw schema and provenance, add ingestion timestamps. |
+| **Silver** | `02_Silver_Layer.py`; weather processing in `04_Weather_Data_Extraction.py` | `silver_city_day`, `silver_city_hour`, `silver_station_day`, `silver_station_hour`, `silver_stations`, `silver_weather` | Trim text, replace invalid/negative pollutant values with null, cast dates, deduplicate on appropriate business keys. |
+| **Gold** | `03_Gold_Layer.py`; weather integration in `04_Weather_Data_Extraction.py` | `gold_city_aqi_daily`, `gold_city_aqi_monthly`, `gold_pollutant_analysis`, `gold_hourly_patterns`, `gold_station_hotspots`, `gold_weather_air_quality` | Aggregate AQI and pollutants, build city/station comparisons, compute hourly patterns, and join weather with AQI. |
 
-### 4.3 Orchestration & Workflow Engine
-The automated pipeline is defined as a unified multi-task Databricks Workflow DAG (`Smart_City_Air_Quality_ETL_Pipeline.json`):
-1. **Task 1: `Bronze_Layer`** (`01_Bronze_Layer.py`) – Ingests raw CSVs into Bronze Delta tables.
-2. **Task 2: `Silver_Layer`** (`02_Silver_Layer.py`) – Runs data cleansing and business-key deduplication (depends on `Bronze_Layer`).
-3. **Task 3: `Gold_Layer`** (`03_Gold_Layer.py`) – Produces the first 5 analytical Gold tables (depends on `Silver_Layer`).
-4. **Task 4: `Weather_Integration`** (`04_Weather_Data_Extraction.py`) – Queries Open-Meteo API, produces `bronze_weather`, `silver_weather`, and creates the final joined `gold_weather_air_quality` table (depends on `Gold_Layer`).
+### 4.3 Workflow orchestration
 
-### 4.4 Serving & Analytics Layer
-- **Power BI Dashboard:** Direct connection to the 6 Gold Delta tables/CSVs providing interactive dashboards:
-  - *Overview & City Rankings:* City AQI comparisons and distribution across CPCB AQI buckets.
-  - *Diurnal Patterns:* Peak morning and evening rush-hour pollution spikes by hour.
-  - *Station Hotspots:* Geospatial mapping of high-AQI stations enriched with station names and states.
-  - *Meteorological Drivers:* Correlation matrix exploring the impact of wind speed, humidity, and temperature on PM2.5 and AQI dispersion.
-- **Curated CSV Marts:** Exported datasets maintained in `data/gold/` for open-source reproducibility, ML research, and exploratory analysis.
+The Databricks multi-task workflow (`Smart_City_Air_Quality_ETL_Pipeline.json`) runs four dependent tasks:
+
+1. **`Bronze_Layer`** — executes `01_Bronze_Layer.py` to ingest the five AQI source files into raw Delta tables.
+2. **`Silver_Layer`** — executes `02_Silver_Layer.py` to clean and deduplicate AQI data; depends on Bronze.
+3. **`Gold_Layer`** — executes `03_Gold_Layer.py` to produce the five core AQI analytical marts; depends on Silver.
+4. **`Weather_Integration`** — executes `04_Weather_Data_Extraction.py` to retrieve weather, populate `bronze_weather` and `silver_weather`, and create `gold_weather_air_quality`; depends on Gold.
+
+### 4.4 Curated exports and Power BI
+
+Six Gold datasets are exported to `data/gold/*.csv` for reproducible downstream analytics and Power BI import. **The implemented reporting path is Gold → CSV exports → Power BI**, not a live DirectQuery connection.
+
+The Power BI report contains these **four completed pages**:
+
+| Dashboard page | Implemented visuals |
+|---|---|
+| **1. Air Quality Overview** | Average AQI, total cities, total stations, AQI trend over time, Top 10 polluted cities, AQI category distribution, Year and City slicers. |
+| **2. Pollutant Analysis** | Average pollutant concentration, multi-pollutant historical trends, city/pollutant comparisons, Pollutant/Year/City slicers. |
+| **3. Weather & Air Quality** | Temperature, humidity, rainfall, and wind-speed KPIs; four weather-versus-AQI scatter charts; Year and City slicers. |
+| **4. Station Hotspot Analysis** | Total stations, average station AQI, Top 10 polluted monitoring stations, Top 10 cities by station AQI, station operational status donut, maximum station AQI by city, City slicer. |
+
+**Important:** Page 4 uses station rankings and status charts, **not a geospatial hotspot map**. Page 3 uses weather-versus-AQI scatter plots, **not a correlation matrix**. The `gold_hourly_patterns` mart is available in the analytical outputs, but a separate diurnal-pattern dashboard is not one of the four completed pages.
 
 ---
 
 ## 5. Gold Analytical Marts Schema Reference
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           GOLD ANALYTICS DATA MARTS                         │
-├───────────────────────────┬─────────────────────────────────────────────────┤
-│ Table Name                │ Key Columns & Description                       │
-├───────────────────────────┼─────────────────────────────────────────────────┤
-│ gold_city_aqi_daily       │ City, Date, AQI, AQI_Bucket, PM25, PM10, NO2,   │
-│                           │ SO2, CO, O3 (Standardized daily city index)     │
-├───────────────────────────┼─────────────────────────────────────────────────┤
-│ gold_city_aqi_monthly     │ City, Year, Month, Avg_AQI, Max_AQI, Avg_PM25,  │
-│                           │ Avg_PM10, AQI_Observations, Total_Days          │
-├───────────────────────────┼─────────────────────────────────────────────────┤
-│ gold_pollutant_analysis   │ City, Date, Pollutant, Concentration            │
-│                           │ (Normalized unpivoted pollutant metrics)        │
-├───────────────────────────┼─────────────────────────────────────────────────┤
-│ gold_hourly_patterns      │ City, Hour (0-23), Avg_AQI, AQI_Observations    │
-│                           │ (Diurnal pollution distribution)                │
-├───────────────────────────┼─────────────────────────────────────────────────┤
-│ gold_station_hotspots     │ StationId, StationName, City, State, Latitude,  │
-│                           │ Longitude, Avg_AQI, Max_AQI, AQI_Observations   │
-├───────────────────────────┼─────────────────────────────────────────────────┤
-│ gold_weather_air_quality  │ City, Date, AQI, AQI_Bucket, PM25, PM10,        │
-│                           │ Temperature_C, Humidity_Percent,                │
-│                           │ Precipitation_mm, Max_Wind_Speed_kmh,           │
-│                           │ Latitude, Longitude (Enriched ML Mart)          │
-└───────────────────────────┴─────────────────────────────────────────────────┘
-```
+| Gold table | Representative columns and purpose |
+|---|---|
+| `gold_city_aqi_daily` | `City`, `Date`, `AQI`, `AQI_Bucket`, `PM25`, `PM10`, `NO2`, `SO2`, `CO`, `O3` — daily AQI and pollutant analysis. |
+| `gold_city_aqi_monthly` | `City`, `Year`, `Month`, `Avg_AQI`, `Max_AQI`, `Avg_PM25`, `Avg_PM10`, `AQI_Observations`, `Total_Days` — monthly summaries. |
+| `gold_pollutant_analysis` | `City`, `Date`, `Pollutant`, `Concentration` — unpivoted pollutant comparisons. |
+| `gold_hourly_patterns` | `City`, `Hour`, `Avg_AQI`, `AQI_Observations` — 24-hour pollution patterns. |
+| `gold_station_hotspots` | `StationId`, `StationName`, `City`, `State`, `Avg_AQI`, `Max_AQI`, `AQI_Observations`, `Status` — monitoring station rankings and operational status. |
+| `gold_weather_air_quality` | `City`, `Date`, `AQI`, `AQI_Bucket`, `PM25`, `PM10`, `Temperature_C`, `Humidity_Percent`, `Precipitation_mm`, `Max_Wind_Speed_kmh`, `Latitude`, `Longitude` — weather-enriched AQI data. |
+
+> Column lists are representative of the project documentation and dashboard fields; inspect the exported CSV headers for the definitive schema before writing SQL or DAX against them.
 
 ---
 
-## 6. Data Integrity & Key Processing Metrics
+## 6. Data Integrity and Key Processing Metrics
 
-- **Total Ingested Records:** `3,464,285` (3,434,754 Air Quality + 29,531 Weather).
-- **Target Cities Analyzed:** `26` major Indian urban centers.
-- **Duplicate Keys in Final Gold Layer:** `0` duplicate `[City, Date]` or `[StationId, Date]` combinations.
-- **ACID Transaction Guarantees:** 100% managed via Delta Lake format in Databricks.
+| Metric | Value / implementation |
+|---|---|
+| Kaggle raw AQI records | **3,434,754** |
+| Open-Meteo weather rows | **29,531** |
+| Combined raw/source row count | **3,464,285** (sum of the two source counts; not a deduplicated Gold count) |
+| Cities analyzed | **26** |
+| Monitoring stations shown in Power BI | **110** |
+| City-level daily AQI rows | **29,531** (project dataset count) |
+| Gold marts exported | **6** |
+| Power BI report pages | **4** |
+| Duplicate business keys | Reported as **0** in the original processing notes for checked Gold keys; verify from pipeline quality logs before claiming this for every Gold table. |
+| Delta Lake | Provides ACID transaction support for Delta tables. |
+
+### Example Power BI dashboard findings
+
+- **Air Quality Overview:** Average AQI **166.5**, **26** cities, **110** monitoring stations.
+- **Station Hotspot Analysis:** Average station AQI **163.6** across all selected stations.
+- **Delhi slicer validation:** **38** stations and average station AQI **235.0**; the station and city visuals updated with the filter.
+- **Weather & Air Quality:** Mean temperature **25.6°C**, humidity **67.8%**, daily rainfall **3.2 mm**, and maximum wind speed **15.7 km/h** in the unfiltered report view.
+
+These are **observed Power BI dashboard values**, which may vary when report filters are changed.
+
+---
+
+## 7. Project Artifacts
+
+- Databricks notebooks/scripts: `01_Bronze_Layer.py`, `02_Silver_Layer.py`, `03_Gold_Layer.py`, `04_Weather_Data_Extraction.py`.
+- Workflow configuration: `Smart_City_Air_Quality_ETL_Pipeline.json`.
+- Exported analytics datasets: `data/gold/*.csv` (six files).
+- Power BI report: `Smart_City_Air_Quality_Dashboard.pbix`.
+- Architecture diagram: `Smart_City_Air_Quality_Architecture.svg`.
+
+**Repository:** https://github.com/Rudra-AI-2127/Smart-City-Air-Quality-Intelligence

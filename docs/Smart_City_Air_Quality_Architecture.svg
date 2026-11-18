@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1000" viewBox="0 0 1800 1000">
+<defs><marker id="a" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#7543bb"/></marker></defs>
+<rect width="1800" height="1000" fill="#f8f6fd"/>
+<rect x="260" y="25" width="1280" height="115" rx="22" fill="#3b2269" stroke="#3b2269" stroke-width="2"/>
+<text x="900" y="76" text-anchor="middle" font-family="Arial,sans-serif" font-size="39" font-weight="700" fill="#fff">SMART CITY AIR QUALITY INTELLIGENCE</text>
+<text x="900" y="117" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="400" fill="#e5d6ff">Data Engineering &amp; Analytics Architecture</text>
+<rect x="30" y="178" width="295" height="715" rx="20" fill="#f0eafa" stroke="#d4c4ed" stroke-width="2"/>
+<text x="177.5" y="216" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#482978">DATA SOURCES</text>
+<rect x="345" y="178" width="240" height="715" rx="20" fill="#f0eafa" stroke="#d4c4ed" stroke-width="2"/>
+<text x="465.0" y="216" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#482978">DATA LANDING</text>
+<rect x="605" y="178" width="790" height="715" rx="20" fill="#f0eafa" stroke="#d4c4ed" stroke-width="2"/>
+<text x="1000.0" y="216" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#482978">DATABRICKS MEDALLION LAKEHOUSE</text>
+<rect x="1415" y="178" width="355" height="715" rx="20" fill="#f0eafa" stroke="#d4c4ed" stroke-width="2"/>
+<text x="1592.5" y="216" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#482978">SERVING &amp; ANALYTICS</text>
+<rect x="50" y="255" width="255" height="230" rx="14" fill="#fff" stroke="#c3afe0" stroke-width="2"/>
+<text x="177" y="297" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#302044">Kaggle AQI Datasets</text>
+<text x="68" y="342" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">5 CSV files (~3.43M records)</text>
+<text x="68" y="370" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• city_day.csv</text>
+<text x="68" y="398" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• city_hour.csv</text>
+<text x="68" y="426" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• station_day.csv</text>
+<text x="68" y="454" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• station_hour.csv</text>
+<text x="68" y="482" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• stations.csv</text>
+<rect x="50" y="540" width="255" height="240" rx="14" fill="#fff" stroke="#c3afe0" stroke-width="2"/>
+<text x="177" y="582" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#302044">Open-Meteo API</text>
+<text x="68" y="630" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">Historical weather</text>
+<text x="68" y="662" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">26 Indian cities</text>
+<text x="68" y="694" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">29,531 city-day rows</text>
+<text x="68" y="726" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">Temperature, humidity,</text>
+<text x="68" y="758" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">rainfall, wind speed</text>
+<rect x="365" y="372" width="200" height="290" rx="14" fill="#fff" stroke="#c3afe0" stroke-width="2"/>
+<text x="465" y="416" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#302044">Unity Catalog</text>
+<text x="465" y="446" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#302044">Volume</text>
+<text x="384" y="503" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">Raw CSV staging</text>
+<text x="384" y="539" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">Managed storage</text>
+<text x="384" y="575" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">DBFS / Volumes</text>
+<text x="384" y="611" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">Databricks access</text>
+<path d="M305 385 L365 450" fill="none" stroke="#7543bb" stroke-width="4" marker-end="url(#a)"/>
+<path d="M305 645 L365 580" fill="none" stroke="#7543bb" stroke-width="4" marker-end="url(#a)"/>
+<rect x="625" y="252" width="750" height="110" rx="14" fill="#e8ddfa" stroke="#9a74c8" stroke-width="2"/>
+<text x="1000" y="295" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#302044">Databricks Multi-Task Workflow DAG</text>
+<text x="1000" y="331" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">Bronze_Layer → Silver_Layer → Gold_Layer → Weather_Integration</text>
+<rect x="625" y="415" width="230" height="390" rx="14" fill="#fff0e5" stroke="#de9667" stroke-width="2"/>
+<text x="740" y="455" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#302044">BRONZE LAYER</text>
+<text x="642" y="515" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• Raw Delta tables</text>
+<text x="642" y="553" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• AQI + weather ingestion</text>
+<text x="642" y="591" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• Schema preservation</text>
+<text x="642" y="629" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• Ingest timestamps</text>
+<text x="642" y="667" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• bronze_city_day</text>
+<text x="642" y="705" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• bronze_station_hour</text>
+<text x="642" y="743" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• bronze_weather</text>
+<path d="M740 362 L740 415" fill="none" stroke="#7543bb" stroke-width="4" marker-end="url(#a)"/>
+<rect x="875" y="415" width="230" height="390" rx="14" fill="#f3f4fc" stroke="#9a9fbb" stroke-width="2"/>
+<text x="990" y="455" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#302044">SILVER LAYER</text>
+<text x="892" y="515" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• Cleaning &amp; validation</text>
+<text x="892" y="553" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• Null and type handling</text>
+<text x="892" y="591" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• Whitespace normalization</text>
+<text x="892" y="629" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• Deduplication</text>
+<text x="892" y="667" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• Keys: City + Date</text>
+<text x="892" y="705" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• StationId + Date</text>
+<path d="M990 362 L990 415" fill="none" stroke="#7543bb" stroke-width="4" marker-end="url(#a)"/>
+<rect x="1125" y="415" width="230" height="390" rx="14" fill="#fff4df" stroke="#dfaa4e" stroke-width="2"/>
+<text x="1240" y="455" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#302044">GOLD LAYER</text>
+<text x="1142" y="515" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• 6 analytical marts</text>
+<text x="1142" y="553" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• city_aqi_daily</text>
+<text x="1142" y="591" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• city_aqi_monthly</text>
+<text x="1142" y="629" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• pollutant_analysis</text>
+<text x="1142" y="667" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• hourly_patterns</text>
+<text x="1142" y="705" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• station_hotspots</text>
+<text x="1142" y="743" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">• weather_air_quality</text>
+<path d="M1240 362 L1240 415" fill="none" stroke="#7543bb" stroke-width="4" marker-end="url(#a)"/>
+<path d="M565 560 L625 560" fill="none" stroke="#7543bb" stroke-width="4" marker-end="url(#a)"/>
+<path d="M855 610 L875 610" fill="none" stroke="#7543bb" stroke-width="4" marker-end="url(#a)"/>
+<path d="M1105 610 L1125 610" fill="none" stroke="#7543bb" stroke-width="4" marker-end="url(#a)"/>
+<rect x="1435" y="265" width="315" height="220" rx="14" fill="#fff" stroke="#c3afe0" stroke-width="2"/>
+<text x="1592" y="306" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#302044">Curated CSV Marts</text>
+<text x="1455" y="360" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">6 exported Gold CSV files</text>
+<text x="1455" y="393" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">Version-controlled outputs</text>
+<text x="1455" y="426" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">Reporting-ready datasets</text>
+<text x="1455" y="459" text-anchor="start" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#302044">data/gold/*.csv</text>
+<rect x="1435" y="530" width="315" height="315" rx="14" fill="#fff" stroke="#c3afe0" stroke-width="2"/>
+<text x="1592" y="574" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#302044">Power BI Analytics</text>
+<text x="1592" y="607" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#302044">4 Interactive Dashboard Pages</text>
+<rect x="1450" y="627" width="285" height="44" rx="7" fill="#eee3fb" stroke="#eee3fb" stroke-width="2"/>
+<text x="1464" y="656" text-anchor="start" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#302044">Air Quality Overview</text>
+<rect x="1450" y="678" width="285" height="44" rx="7" fill="#eee3fb" stroke="#eee3fb" stroke-width="2"/>
+<text x="1464" y="707" text-anchor="start" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#302044">Pollutant Analysis</text>
+<rect x="1450" y="729" width="285" height="44" rx="7" fill="#eee3fb" stroke="#eee3fb" stroke-width="2"/>
+<text x="1464" y="758" text-anchor="start" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#302044">Weather &amp; Air Quality</text>
+<rect x="1450" y="780" width="285" height="44" rx="7" fill="#eee3fb" stroke="#eee3fb" stroke-width="2"/>
+<text x="1464" y="809" text-anchor="start" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#302044">Station Hotspot Analysis</text>
+<path d="M1355 520 L1435 375" fill="none" stroke="#7543bb" stroke-width="4" marker-end="url(#a)"/>
+<path d="M1592 485 L1592 530" fill="none" stroke="#7543bb" stroke-width="4" marker-end="url(#a)"/>
+<rect x="30" y="919" width="1740" height="65" rx="14" fill="#e9defa" stroke="#cbb4e8" stroke-width="2"/>
+<text x="900" y="960" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#4b267b">AQI + Weather  →  Unity Catalog  →  Bronze  →  Silver  →  Gold  →  Curated CSV Exports  →  Power BI</text>
+</svg>
