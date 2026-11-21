@@ -14,18 +14,18 @@ The solution combines historical air quality observations from Kaggle with meteo
 
 ### Project at a Glance
 
-| Metric                                |                     Result |
-| ------------------------------------- | -------------------------: |
-| Historical air quality records        |                  3,434,754 |
-| Source air quality CSV files          |                          5 |
-| Cities covered by weather integration |                         26 |
-| Historical weather records            |                     29,531 |
-| Gold analytical datasets              |                          6 |
-| Monitoring stations represented       |                        110 |
-| Power BI dashboard pages              |                          4 |
-| Average AQI in overview dashboard     |                      166.5 |
-| Automated Databricks workflow tasks   |                          4 |
-| Successful workflow execution time    | Approximately 4 min 33 sec |
+| Metric | Result |
+|---|---:|
+| Historical air quality records | 3,434,754 |
+| Source air quality CSV files | 5 |
+| Cities covered by weather integration | 26 |
+| Historical weather records | 29,531 |
+| Gold analytical datasets | 6 |
+| Monitoring stations represented | 110 |
+| Power BI dashboard pages | 4 |
+| Average AQI in overview dashboard | 166.5 |
+| Automated Databricks workflow tasks | 4 |
+| Successful workflow execution time | Approximately 4 min 33 sec |
 
 > Dashboard metrics reflect the historical dataset and may change when interactive filters are applied.
 
@@ -53,17 +53,17 @@ Although environmental monitoring stations generate substantial volumes of data,
 
 ## Technology Stack
 
-| Technology               | Purpose                                                 |
-| ------------------------ | ------------------------------------------------------- |
-| Python                   | Data extraction, API integration, and scripting         |
-| Apache PySpark           | Distributed data cleaning and transformation            |
-| Databricks               | Cloud-based data engineering and workflow orchestration |
-| Delta Lake               | Reliable storage for processed datasets                 |
-| Unity Catalog            | Data organization and governance                        |
-| Databricks SQL Warehouse | SQL access to curated Gold tables                       |
-| Open-Meteo API           | Historical meteorological data                          |
-| Power BI                 | Interactive dashboards and analytics                    |
-| Git & GitHub             | Version control and project management                  |
+| Technology | Purpose |
+|---|---|
+| Python | Data extraction, API integration, and scripting |
+| Apache PySpark | Distributed data cleaning and transformation |
+| Databricks | Cloud-based data engineering and workflow orchestration |
+| Delta Lake | Reliable storage for processed datasets |
+| Unity Catalog | Data organization and governance |
+| Databricks SQL Warehouse | SQL access to curated Gold tables |
+| Open-Meteo API | Historical meteorological data |
+| Power BI | Interactive dashboards and analytics |
+| Git & GitHub | Version control and project management |
 
 ## Data Sources
 
@@ -114,7 +114,7 @@ Historical weather observations were collected for 26 Indian cities.
 
 ## System Architecture
 
-
+![Smart City Air Quality Architecture](docs/Smart_City_Air_Quality_Architecture.svg)
 
 [View Architecture Diagram](docs/Smart_City_Air_Quality_Architecture.svg) | [Read Architecture Documentation](docs/03_Project_Architecture.md)
 
@@ -219,14 +219,14 @@ Historical weather data is extracted using Python and the Open-Meteo API and int
 
 Six curated Gold datasets are available for analysis.
 
-| Gold Table                 | Description                                          |
-| -------------------------- | ---------------------------------------------------- |
-| `gold_city_aqi_daily`      | Daily city-level AQI trends and pollution categories |
-| `gold_city_aqi_monthly`    | Monthly AQI summaries and pollutant averages         |
-| `gold_pollutant_analysis`  | Pollutant concentrations across cities and dates     |
-| `gold_hourly_patterns`     | Hourly AQI patterns                                  |
-| `gold_station_hotspots`    | Monitoring station AQI and hotspot analysis          |
-| `gold_weather_air_quality` | Integrated air quality and weather observations      |
+| Gold Table | Description |
+|---|---|
+| `gold_city_aqi_daily` | Daily city-level AQI trends and pollution categories |
+| `gold_city_aqi_monthly` | Monthly AQI summaries and pollutant averages |
+| `gold_pollutant_analysis` | Pollutant concentrations across cities and dates |
+| `gold_hourly_patterns` | Hourly AQI patterns |
+| `gold_station_hotspots` | Monitoring station AQI and hotspot analysis |
+| `gold_weather_air_quality` | Integrated air quality and weather observations |
 
 These datasets provide the analytical foundation for the Power BI dashboards.
 
@@ -268,13 +268,13 @@ The Power BI data source was subsequently updated to use the **Databricks connec
 
 ### Connection Configuration
 
-| Setting             | Configuration                     |
-| ------------------- | --------------------------------- |
-| Data Source         | Databricks                        |
-| Authentication      | OAuth                             |
-| Catalog             | `workspace`                       |
-| Schema              | `default`                         |
-| Data Source Tables  | Six Gold analytical tables        |
+| Setting | Configuration |
+|---|---|
+| Data Source | Databricks |
+| Authentication | OAuth |
+| Catalog | `workspace` |
+| Schema | `default` |
+| Data Source Tables | Six Gold analytical tables |
 | Power BI Connection | Import-based Databricks connector |
 
 ### Integration Benefits
@@ -295,7 +295,7 @@ The project includes four interactive Power BI dashboard pages.
 
 ### 1. Air Quality Overview
 
-
+![Air Quality Overview](dashboard/Air%20Quality%20Overview.png)
 
 **Dashboard Features:**
 
@@ -311,7 +311,7 @@ The project includes four interactive Power BI dashboard pages.
 
 ### 2. Pollutant Analysis
 
-
+![Pollutant Analysis](dashboard/Pollutant%20Analysis.png)
 
 **Dashboard Features:**
 
@@ -326,7 +326,7 @@ The project includes four interactive Power BI dashboard pages.
 
 ### 3. Weather & Air Quality
 
-
+![Weather and Air Quality](dashboard/Weather%20%26%20Air%20Quality.png)
 
 **Dashboard Features:**
 
@@ -342,7 +342,7 @@ The project includes four interactive Power BI dashboard pages.
 
 ### 4. Station Hotspot Analysis
 
-
+![Station Hotspot Analysis](dashboard/Station%20Hotspot%20Analysis.png)
 
 **Dashboard Features:**
 
@@ -380,26 +380,26 @@ Station-level analysis helps identify localized pollution patterns that may not 
 
 ### Selected Dashboard Results
 
-| Metric                                                  | Result |
-| ------------------------------------------------------- | -----: |
-| Average AQI                                             |  166.5 |
-| Cities analyzed                                         |     26 |
-| Monitoring stations                                     |    110 |
-| Average station AQI                                     |  163.6 |
-| Delhi monitoring stations (filtered)                    |     38 |
-| Delhi average station AQI (filtered)                    |  235.0 |
-| Duplicate City–Date keys in weather-enriched Gold table |      0 |
+| Metric | Result |
+|---|---:|
+| Average AQI | 166.5 |
+| Cities analyzed | 26 |
+| Monitoring stations | 110 |
+| Average station AQI | 163.6 |
+| Delhi monitoring stations (filtered) | 38 |
+| Delhi average station AQI (filtered) | 235.0 |
+| Duplicate City–Date keys in weather-enriched Gold table | 0 |
 
 ## Challenges and Solutions
 
-| Challenge                       | Implemented Solution                               |
-| ------------------------------- | -------------------------------------------------- |
-| Large environmental datasets    | Distributed processing using PySpark               |
-| Missing and inconsistent values | Silver-layer cleaning and validation               |
-| Multiple data sources           | Python extraction and structured integration       |
-| Complex analytical requirements | Six curated Gold datasets                          |
-| Repetitive ETL processing       | Databricks Workflow automation                     |
-| Manual CSV-based reporting      | Databricks SQL Warehouse integration with Power BI |
+| Challenge | Implemented Solution |
+|---|---|
+| Large environmental datasets | Distributed processing using PySpark |
+| Missing and inconsistent values | Silver-layer cleaning and validation |
+| Multiple data sources | Python extraction and structured integration |
+| Complex analytical requirements | Six curated Gold datasets |
+| Repetitive ETL processing | Databricks Workflow automation |
+| Manual CSV-based reporting | Databricks SQL Warehouse integration with Power BI |
 
 ## Future Scope
 
@@ -417,7 +417,7 @@ The project provides a foundation for additional smart-city environmental monito
 
 The final presentation summarizes the project architecture, implementation, datasets, Databricks workflow, Power BI dashboards, key findings, and future scope.
 
-[**View Final Project Presentation (PDF)**](presentation/Smart_City_Air_Quality_Presentation.pdf)
+**[View Final Project Presentation (PDF)](presentation/Smart%20City%20-%20Air%20Quality%20%26%20Pollution%20Intelligence.pdf)**
 
 The presentation includes:
 
@@ -457,14 +457,14 @@ Smart-City-Air-Quality-Intelligence/
 │   └── Smart_City_Air_Quality_Architecture.svg
 │
 ├── presentation/
-│   └── Smart_City_Air_Quality_Presentation.pdf
+│   └── Smart City - Air Quality & Pollution Intelligence.pdf
 │
 ├── requirements.txt
 ├── .gitignore
 └── README.md
 ```
 
-> This structure highlights the main project assets. The presentation path assumes the PDF is saved under the filename shown above.
+> This structure highlights the main project assets. The presentation PDF is stored in the `presentation/` directory.
 
 ## Project Status
 
@@ -481,7 +481,7 @@ Smart-City-Air-Quality-Intelligence/
 - [x] Power BI dashboard functionality verified
 - [x] Architecture diagram and technical documentation
 - [x] GitHub repository created and synchronized
-- [x] Final project presentation prepared
+- [x] Final project presentation prepared and uploaded
 
 ## Data Attribution
 
